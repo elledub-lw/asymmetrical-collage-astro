@@ -1,0 +1,279 @@
+---
+const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+
+// Normalise for active-link detection (strip trailing slash)
+const path = currentPath.replace(/\/$/, '');
+
+const featuredTags = ['bitcoin', 'risk', 'sovereignty', 'long-term-thinking'];
+---
+
+<nav class="nav">
+  <div class="container nav-container">
+    <!-- Logo -->
+    <a href={base} class="nav-logo">Asymmetrical Collage</a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li>
+        <a href={`${base}articles/`} class={path.startsWith(base + 'articles') ? 'active' : ''}>
+          Articles
+        </a>
+      </li>
+      <li>
+        <a href={`${base}about/`} class={path === base + 'about' ? 'active' : ''}>
+          About
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right side: theme toggle + hamburger -->
+    <div class="nav-right">
+      <!-- Dark mode toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon-sun">☀</span>
+        <span class="icon-moon">☽</span>
+      </button>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href={`${base}articles/`}>Articles</a></li>
+      <li><a href={`${base}about/`}>About</a></li>
+      <li class="mobile-tags-label">Explore</li>
+      {featuredTags.map(tag => (
+        <li>
+          <a href={`${base}tags/${tag}/`} class="mobile-tag">{tag}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-nav-bg);
+    border-bottom: 1px solid var(--color-nav-border);
+    z-index: 1000;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1.5rem;
+  }
+
+  /* Logo */
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-nav-text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .nav-logo:hover {
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  /* Desktop nav links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-nav-link);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links a.active {
+    color: var(--color-nav-hover);
+  }
+
+  /* Right side controls */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-nav-text);
+    font-size: 0.9375rem;
+    transition: background-color 0.2s ease;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Show correct icon based on current theme */
+  [data-theme="light"] .icon-moon { display: none; }
+  [data-theme="dark"]  .icon-sun  { display: none; }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-nav-text);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    background: var(--color-nav-bg);
+    border-top: 1px solid var(--color-nav-border);
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0.75rem 0;
+    margin: 0;
+  }
+
+  .mobile-menu li {
+    padding: 0;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-nav-link);
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .mobile-menu a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-tags-label {
+    padding: 0.75rem 1.5rem 0.25rem;
+    font-family: var(--font-heading);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(212, 241, 244, 0.45);
+  }
+
+  .mobile-menu .mobile-tag {
+    color: var(--palette-blue-green);
+    font-size: 0.875rem;
+    padding-left: 1.75rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-container {
+      height: 60px;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  navToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('open');
+  });
+
+  // Close mobile menu when a link is clicked
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Dark mode toggle
+  const themeToggle = document.getElementById('theme-toggle');
+
+  themeToggle?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('ac-theme', next);
+  });
+</script>

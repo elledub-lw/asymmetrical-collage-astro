@@ -1,0 +1,129 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const featuredTags = [
+  { label: 'bitcoin',           href: `${base}tags/bitcoin/` },
+  { label: 'risk',              href: `${base}tags/risk/` },
+  { label: 'sovereignty',       href: `${base}tags/sovereignty/` },
+  { label: 'long-term-thinking',href: `${base}tags/long-term-thinking/` },
+];
+---
+
+<section
+  class="hero"
+  id="hero"
+  style={`background-image: url('${base}images/ac-hero-bg.jpg')`}
+>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Writing by Laurent Waisman</p>
+    <h1 class="hero-title">Asymmetrical Collage</h1>
+    <p class="hero-tagline">
+      On sovereignty, resilience, Bitcoin, risk, and building for the long term.
+    </p>
+    <div class="hero-tags">
+      {featuredTags.map(tag => (
+        <a href={tag.href} class="hero-tag">{tag.label}</a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-hero-overlay);
+    backdrop-filter: blur(0px);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(212, 241, 244, 0.75);
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-tagline {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.1875rem);
+    color: rgba(212, 241, 244, 0.9);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    color: var(--palette-baby-blue);
+    border: 1px solid rgba(212, 241, 244, 0.4);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: rgba(212, 241, 244, 0.08);
+  }
+
+  .hero-tag:hover {
+    background: var(--palette-orange);
+    border-color: var(--palette-orange);
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 60vh;
+      background-position: center center;
+    }
+  }
+</style>

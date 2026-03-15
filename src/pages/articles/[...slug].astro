@@ -1,0 +1,333 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'articles'>;
+}
+
+const { post } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { title, date, tags, summary, image } = post.data;
+const { Content } = await post.render();
+
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(date);
+
+// Prev / next navigation
+const allPosts = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const idx = allPosts.findIndex(p => p.slug === post.slug);
+const prev = idx > 0 ? allPosts[idx - 1] : null;
+const next = idx < allPosts.length - 1 ? allPosts[idx + 1] : null;
+
+// Resolve image path for Open Graph
+const ogImage = image
+  ? new URL(`${base}${image}`.replace(/\/+/g, '/'), Astro.site).href
+  : undefined;
+---
+
+<BaseLayout title={title} description={summary} image={ogImage}>
+  <article class="post-article">
+    <div class="content-column">
+
+      <!-- Back link -->
+      <a href={`${base}articles/`} class="back-link">
+        <span aria-hidden="true">←</span> All posts
+      </a>
+
+      <!-- Header -->
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime={date.toISOString()} class="post-date">{formattedDate}</time>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map(tag => (
+                <a href={`${base}tags/${tag}/`} class="tag">{tag}</a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <h1 class="post-title">{title}</h1>
+
+        {summary && (
+          <p class="post-summary">{summary}</p>
+        )}
+      </header>
+
+      <!-- Hero image -->
+      {image && (
+        <div class="post-image-wrap">
+          <img
+            src={image?.startsWith('/') ? `${base}${image.slice(1)}` : `${base}${image}`}
+            alt={title}
+            class="post-image"
+            loading="eager"
+          />
+        </div>
+      )}
+
+      <!-- Body -->
+      <div class="post-body prose">
+        <Content />
+      </div>
+
+      <!-- Tags footer -->
+      {tags.length > 0 && (
+        <div class="post-footer-tags">
+          <span class="tags-label">Filed under</span>
+          {tags.map(tag => (
+            <a href={`${base}tags/${tag}/`} class="tag">{tag}</a>
+          ))}
+        </div>
+      )}
+
+      <!-- Prev / Next -->
+      <nav class="post-nav">
+        <div class="post-nav-item post-nav-prev">
+          {prev && (
+            <>
+              <span class="nav-label">← Older</span>
+              <a href={`${base}articles/${prev.slug}/`} class="nav-title">
+                {prev.data.title}
+              </a>
+            </>
+          )}
+        </div>
+        <div class="post-nav-item post-nav-next">
+          {next && (
+            <>
+              <span class="nav-label">Newer →</span>
+              <a href={`${base}articles/${next.slug}/`} class="nav-title">
+                {next.data.title}
+              </a>
+            </>
+          )}
+        </div>
+      </nav>
+
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-article {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    margin-bottom: var(--space-xl);
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  .post-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+  }
+
+  .post-date {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .post-title {
+    font-size: clamp(1.625rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-md);
+  }
+
+  .post-summary {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    border-left: 3px solid var(--palette-orange);
+    padding-left: var(--space-md);
+    margin-bottom: 0;
+    max-width: 58ch;
+  }
+
+  .post-image-wrap {
+    margin: var(--space-xl) 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .post-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 480px;
+    object-fit: cover;
+  }
+
+  /* Prose styles for post body */
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .prose :global(h2),
+  .prose :global(h3),
+  .prose :global(h4) {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .prose :global(p) {
+    margin-bottom: var(--space-md);
+    max-width: 68ch;
+  }
+
+  .prose :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-accent-hover);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-xl);
+  }
+
+  .prose :global(li) {
+    margin-bottom: var(--space-xs);
+    max-width: 65ch;
+  }
+
+  .prose :global(blockquote) {
+    font-family: var(--font-quote);
+    font-style: italic;
+    border-left: 3px solid var(--color-accent);
+    padding: var(--space-md) var(--space-lg);
+    margin: var(--space-xl) 0;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+  }
+
+  /* Tags footer */
+  .post-footer-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-lg);
+  }
+
+  .tags-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Prev / Next navigation */
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-lg);
+  }
+
+  .post-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .post-nav-next {
+    text-align: right;
+  }
+
+  .nav-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .nav-title {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+
+  .nav-title:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .post-nav-next {
+      text-align: left;
+    }
+  }
+</style>

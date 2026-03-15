@@ -1,0 +1,337 @@
+/* =============================================
+   ASYMMETRICAL COLLAGE — Global Styles
+   Summer Splash palette + Bitcoin Orange
+   ============================================= */
+
+/* =============================================
+   DESIGN TOKENS
+   ============================================= */
+
+:root {
+  /* Summer Splash palette */
+  --palette-navy:       #05445E;
+  --palette-grotto:     #189AB4;
+  --palette-blue-green: #75E6DA;
+  --palette-baby-blue:  #D4F1F4;
+  --palette-orange:     #F7931A;
+
+  /* Typography */
+  --font-heading: 'Raleway', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --font-quote:   Georgia, 'Times New Roman', serif;
+
+  /* Spacing scale */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Layout */
+  --content-width:   800px;
+  --container-width: 1200px;
+  --breakpoint-md:   768px;
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+
+/* Light theme (default) */
+:root,
+[data-theme="light"] {
+  --color-bg:           #ffffff;
+  --color-surface:      #f0f9fb;
+  --color-text:         #1c1c1e;
+  --color-text-muted:   #5a7a86;
+  --color-heading:      #05445E;
+  --color-accent:       #189AB4;
+  --color-accent-hover: #14809a;
+  --color-cta:          #F7931A;
+  --color-cta-hover:    #d97c0e;
+  --color-border:       #D4F1F4;
+  --color-tag-bg:       #D4F1F4;
+  --color-tag-text:     #05445E;
+  --color-nav-bg:       #05445E;
+  --color-nav-text:     #ffffff;
+  --color-nav-link:     rgba(255,255,255,0.85);
+  --color-nav-hover:    #F7931A;
+  --color-nav-border:   rgba(255,255,255,0.12);
+  --color-hero-overlay: rgba(5, 68, 94, 0.42);
+  --color-code-bg:      #f0f9fb;
+  --color-footer-bg:    #05445E;
+  --color-footer-text:  #D4F1F4;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --color-bg:           #03303f;
+  --color-surface:      #05445E;
+  --color-text:         #D4F1F4;
+  --color-text-muted:   #8ab8c4;
+  --color-heading:      #75E6DA;
+  --color-accent:       #75E6DA;
+  --color-accent-hover: #5dd4c8;
+  --color-cta:          #F7931A;
+  --color-cta-hover:    #ff9e1f;
+  --color-border:       rgba(117, 230, 218, 0.2);
+  --color-tag-bg:       rgba(24, 154, 180, 0.25);
+  --color-tag-text:     #75E6DA;
+  --color-nav-bg:       #03303f;
+  --color-nav-text:     #D4F1F4;
+  --color-nav-link:     rgba(212, 241, 244, 0.8);
+  --color-nav-hover:    #F7931A;
+  --color-nav-border:   rgba(117, 230, 218, 0.15);
+  --color-hero-overlay: rgba(3, 48, 63, 0.58);
+  --color-code-bg:      #05445E;
+  --color-footer-bg:    #03303f;
+  --color-footer-text:  rgba(212, 241, 244, 0.7);
+}
+
+/* =============================================
+   RESET
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 { font-size: 2.5rem;  margin-bottom: var(--space-lg); }
+h2 { font-size: 1.875rem; margin-bottom: var(--space-md); }
+h3 { font-size: 1.375rem; margin-bottom: var(--space-md); }
+h4 { font-size: 1.125rem; margin-bottom: var(--space-sm); }
+
+p {
+  margin-bottom: var(--space-md);
+  max-width: 68ch;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+ul, ol {
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-xl);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+blockquote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-xl) 0;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875em;
+  background: var(--color-code-bg);
+  color: var(--color-heading);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--color-code-bg);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: var(--space-md);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-2xl) 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =============================================
+   LAYOUT UTILITIES
+   ============================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.content-column {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+main {
+  flex: 1;
+  padding-top: 64px; /* height of fixed nav */
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--color-cta);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cta-hover);
+  color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* =============================================
+   TAG BADGES
+   ============================================= */
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.tag:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+/* =============================================
+   READ MORE LINK
+   ============================================= */
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-cta);
+  text-decoration: none;
+  transition: color var(--transition), gap var(--transition);
+}
+
+.read-more:hover {
+  color: var(--color-cta-hover);
+  gap: 0.6rem;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  main {
+    padding-top: 60px;
+  }
+}

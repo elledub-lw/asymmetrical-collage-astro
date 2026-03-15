@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="About"
+  description="About Asymmetrical Collage and Laurent Waisman."
+>
+  <div class="section">
+    <div class="content-column">
+      <header class="page-header">
+        <h1>About</h1>
+      </header>
+
+      <div class="about-body prose">
+        <p>
+          Asymmetrical Collage is a daily blog and holding company run by Laurent Waisman.
+        </p>
+        <p>
+          I write about sovereignty, resilience, Bitcoin, risk, and building for the long term.
+          One post a day. Each one tries to say one thing clearly.
+        </p>
+        <p>
+          I have spent twenty years in banking, fintech, and Bitcoin — risk management,
+          compliance, information security, payments, custody. I co-founded
+          <a href="https://nodl.eu" target="_blank" rel="noopener noreferrer">nodl</a>,
+          a Bitcoin hardware and infrastructure company.
+        </p>
+        <p>
+          I am not trying to tell you what to think. I am trying to offer a framework
+          for thinking with — the kind I wish someone had handed me earlier.
+        </p>
+        <p>
+          <a href={`${base}articles/`}>Start with the articles.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .about-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .prose :global(p) {
+    margin-bottom: var(--space-lg);
+    max-width: 60ch;
+  }
+
+  .prose :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-accent-hover);
+  }
+</style>
