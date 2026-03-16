@@ -70,17 +70,17 @@
   --color-surface:      #05445E;
   --color-text:         #D4F1F4;
   --color-text-muted:   #8ab8c4;
-  --color-heading:      #75E6DA;
-  --color-accent:       #75E6DA;
+  --color-heading:      #D4F1F4;   /* Baby Blue — less saturated than Blue Green, better readability */
+  --color-accent:       #75E6DA;   /* Blue Green stays for interactive accents */
   --color-accent-hover: #5dd4c8;
   --color-cta:          #F7931A;
   --color-cta-hover:    #ff9e1f;
   --color-border:       rgba(117, 230, 218, 0.2);
   --color-tag-bg:       rgba(24, 154, 180, 0.25);
-  --color-tag-text:     #75E6DA;
+  --color-tag-text:     #D4F1F4;   /* Baby Blue — matches headings, less visual noise */
   --color-nav-bg:       #03303f;
-  --color-nav-text:     #D4F1F4;
-  --color-nav-link:     rgba(212, 241, 244, 0.8);
+  --color-nav-text:     #D4F1F4;   /* Baby Blue — logo */
+  --color-nav-link:     rgba(255, 255, 255, 0.85); /* White — links differ from logo */
   --color-nav-hover:    #F7931A;
   --color-nav-border:   rgba(117, 230, 218, 0.15);
   --color-hero-overlay: rgba(3, 48, 63, 0.58);
@@ -224,7 +224,7 @@ img {
 
 main {
   flex: 1;
-  padding-top: 64px; /* height of fixed nav */
+  padding-top: 72px; /* height of fixed nav */
 }
 
 .section {
@@ -332,6 +332,6 @@ main {
   }
 
   main {
-    padding-top: 60px;
+    padding-top: 66px;
   }
 }

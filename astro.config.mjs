@@ -6,5 +6,5 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://elledub-lw.github.io',
-  base: '/asymmetrical-collage-astro',
+  base: '/asymmetrical-collage-astro/',
 });
