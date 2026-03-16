@@ -11,6 +11,7 @@ const base = import.meta.env.BASE_URL;
   <div class="hero-content">
     <h1 class="hero-title">Asymmetrical Collage</h1>
     <p class="hero-tagline">Riding the Waves of Change</p>
+    <p class="hero-desc">An independent holding company — home to a daily blog, a weekly newsletter, and a curated portfolio.</p>
   </div>
 </section>
 
@@ -55,12 +56,24 @@ const base = import.meta.env.BASE_URL;
   }
 
   .hero-tagline {
+    font-family: var(--font-heading);
+    font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+    font-weight: 600;
+    color: rgba(212, 241, 244, 0.95);
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-desc {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2.5vw, 1.1875rem);
-    color: rgba(212, 241, 244, 0.9);
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    color: rgba(212, 241, 244, 0.75);
     line-height: 1.65;
-    margin-bottom: 2rem;
-    max-width: 520px;
+    margin-bottom: 0;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
   }
