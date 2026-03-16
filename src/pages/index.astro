@@ -15,6 +15,46 @@ const recentPosts = allPosts
 <BaseLayout title="Asymmetrical Collage">
   <Hero />
 
+  <section class="holdings-section section">
+    <div class="container">
+      <div class="holdings-grid">
+
+        <a href={`${base}articles/`} class="holding-card holding-card--live">
+          <div class="holding-header">
+            <h3 class="holding-title">Laurent's Blog</h3>
+            <span class="holding-arrow">→</span>
+          </div>
+          <p class="holding-desc">Daily writing on sovereignty, resilience, and building for the long term.</p>
+        </a>
+
+        <div class="holding-card holding-card--soon">
+          <div class="holding-header">
+            <h3 class="holding-title">AC's Assay</h3>
+            <span class="coming-soon">Coming Soon</span>
+          </div>
+          <p class="holding-desc">A weekly newsletter for people navigating change.</p>
+        </div>
+
+        <div class="holding-card holding-card--soon">
+          <div class="holding-header">
+            <h3 class="holding-title">Holdings</h3>
+            <span class="coming-soon">Coming Soon</span>
+          </div>
+          <p class="holding-desc">Companies and projects AC has built or backed.</p>
+        </div>
+
+        <a href={`${base}connect/`} class="holding-card holding-card--live">
+          <div class="holding-header">
+            <h3 class="holding-title">Connect</h3>
+            <span class="holding-arrow">→</span>
+          </div>
+          <p class="holding-desc">Find me on X and Nostr.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="content-column">
       <div class="section-header">
@@ -40,6 +80,88 @@ const recentPosts = allPosts
 </BaseLayout>
 
 <style>
+  /* Holdings section */
+  .holdings-section {
+    background-color: var(--color-surface);
+  }
+
+  .holdings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .holding-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--space-xl);
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .holding-card--live:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 12px rgba(5, 68, 94, 0.08);
+  }
+
+  .holding-card--soon {
+    opacity: 0.55;
+  }
+
+  .holding-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .holding-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-bottom: 0;
+  }
+
+  .holding-arrow {
+    font-size: 1.125rem;
+    color: var(--color-accent);
+    transition: transform 0.2s ease;
+  }
+
+  .holding-card--live:hover .holding-arrow {
+    transform: translateX(4px);
+  }
+
+  .coming-soon {
+    font-family: var(--font-heading);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .holding-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+    max-width: none;
+  }
+
+  @media (max-width: 768px) {
+    .holdings-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Recent posts section */
   .section-header {
     display: flex;
     align-items: baseline;

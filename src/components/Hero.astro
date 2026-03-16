@@ -1,12 +1,5 @@
 ---
 const base = import.meta.env.BASE_URL;
-
-const featuredTags = [
-  { label: 'bitcoin',           href: `${base}tags/bitcoin/` },
-  { label: 'risk',              href: `${base}tags/risk/` },
-  { label: 'sovereignty',       href: `${base}tags/sovereignty/` },
-  { label: 'long-term-thinking',href: `${base}tags/long-term-thinking/` },
-];
 ---
 
 <section
@@ -17,14 +10,7 @@ const featuredTags = [
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">Asymmetrical Collage</h1>
-    <p class="hero-tagline">
-      On sovereignty, resilience, Bitcoin, risk, and building for the long term.
-    </p>
-    <div class="hero-tags">
-      {featuredTags.map(tag => (
-        <a href={tag.href} class="hero-tag">{tag.label}</a>
-      ))}
-    </div>
+    <p class="hero-tagline">Riding the Waves of Change</p>
   </div>
 </section>
 
@@ -77,35 +63,6 @@ const featuredTags = [
     max-width: 520px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-
-  .hero-tag {
-    display: inline-block;
-    padding: 0.3rem 0.75rem;
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: lowercase;
-    color: var(--palette-baby-blue);
-    border: 1px solid rgba(212, 241, 244, 0.4);
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    background: rgba(212, 241, 244, 0.08);
-  }
-
-  .hero-tag:hover {
-    background: var(--palette-orange);
-    border-color: var(--palette-orange);
-    color: #ffffff;
   }
 
   @media (max-width: 768px) {

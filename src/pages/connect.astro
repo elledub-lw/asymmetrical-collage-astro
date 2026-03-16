@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Connect — Asymmetrical Collage">
+  <section class="section">
+    <div class="content-column">
+      <h1>Connect</h1>
+      <p class="intro">The best way to follow the work and reach out is through these two platforms.</p>
+
+      <div class="connect-links">
+
+        <a href="https://x.com/AsymmetricalC" class="connect-link" target="_blank" rel="noopener noreferrer">
+          <span class="connect-platform">X</span>
+          <span class="connect-handle">@AsymmetricalC</span>
+          <span class="connect-arrow">↗</span>
+        </a>
+
+        <a href="https://njump.me/npub1m3qu40agsucj9mkvunvak7yhq86hlgu8sc7mf4w0fhahv0y859ts04zq5r" class="connect-link" target="_blank" rel="noopener noreferrer">
+          <span class="connect-platform">Nostr</span>
+          <span class="connect-handle">npub1m3qu…859ts</span>
+          <span class="connect-arrow">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-md);
+  }
+
+  .intro {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .connect-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 420px;
+  }
+
+  .connect-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    text-decoration: none;
+    background: var(--color-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .connect-link:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 12px rgba(5, 68, 94, 0.08);
+  }
+
+  .connect-platform {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    min-width: 60px;
+  }
+
+  .connect-handle {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    flex: 1;
+  }
+
+  .connect-arrow {
+    color: var(--color-accent);
+    font-size: 1rem;
+  }
+</style>
