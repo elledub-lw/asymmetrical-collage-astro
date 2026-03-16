@@ -2,7 +2,7 @@
 title: "Permission Debt"
 date: 2026-03-06
 draft: false
-tags: ["Sovereignty", "Permission", "Agency", "Building"]
+tags: ["sovereignty", "permission", "agency", "building"]
 summary: "Most doors aren’t locked. You just got used to knocking."
 image: ""
 ---

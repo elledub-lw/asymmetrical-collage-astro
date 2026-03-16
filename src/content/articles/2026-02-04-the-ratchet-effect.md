@@ -3,7 +3,7 @@
 title: “The Ratchet Effect”
 date: 2026-02-04
 draft: false
-tags: [“systems”, “irreversibility”, “progress”, “foundations”]
+tags: ["systems", "irreversibility", "progress", "foundations"]
 summary: “Up your baseline.”
 image: “”
 

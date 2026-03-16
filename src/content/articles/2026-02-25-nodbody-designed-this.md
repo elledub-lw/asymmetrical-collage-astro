@@ -2,7 +2,7 @@
 title: "Nobody Designed This"
 date: 2026-02-25
 draft: false
-tags: ["Systems", "Bitcoin", "Sovereignty"]
+tags: ["systems", "bitcoin", "sovereignty"]
 summary: "It was never about who's in charge. It's whether the rules are right."
 image: ""
 ---

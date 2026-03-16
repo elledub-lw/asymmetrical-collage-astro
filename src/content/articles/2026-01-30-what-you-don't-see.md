@@ -3,7 +3,7 @@
 title: “What You Don’t See”
 date: 2026-01-30
 draft: false
-tags: [“infrastructure”, “maintenance”, “systems”, “foundations”]
+tags: ["infrastructure", "maintenance", "systems", "foundations"]
 summary: “The invisible work is the work that matters.”
 
 ---

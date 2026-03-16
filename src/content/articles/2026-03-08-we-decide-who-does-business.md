@@ -2,7 +2,7 @@
 title: "We Decide Who Does Business"
 date: 2026-03-08
 draft: false
-tags: ["Sovereignty", "Bitcoin", "Regulation", "Privacy"]
+tags: ["sovereignty", "bitcoin", "regulation", "privacy"]
 summary: "The permissioned economy doesn't announce itself as control. It announces itself as standards, and requests your compliance."
 image: "/images/squealer-lei.png"
 ---

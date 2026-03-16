@@ -2,7 +2,7 @@
 title: "Whose Skin Is It?"
 date: 2026-03-07
 draft: false
-tags: ["Sovereignty", "Incentives", "Risk Management", "Decision-Making"]
+tags: ["sovereignty", "incentives", "risk-management", "decision-making"]
 summary: "Skin in the game is the only credential that can't be faked."
 image: ""
 ---

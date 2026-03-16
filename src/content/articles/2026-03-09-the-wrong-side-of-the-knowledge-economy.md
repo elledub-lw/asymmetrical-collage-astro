@@ -2,7 +2,7 @@
 title: "The Wrong Side of the Knowledge Economy"
 date: 2026-03-09
 draft: false
-tags: ["Sovereignty", "Privacy", "Bitcoin", "Systems"]
+tags: ["sovereignty", "privacy", "bitcoin", "systems"]
 summary: "You are not a participant in the knowledge economy. You are the feedstock."
 image: ""
 ---

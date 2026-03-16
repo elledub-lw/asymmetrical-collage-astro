@@ -2,7 +2,7 @@
 title: "You Already Know What to Cut"
 date: 2026-03-04
 draft: false
-tags: ["Decision-Making", "Focus", "Systems", "Pruning"]
+tags: ["decision-making", "focus", "systems", "pruning"]
 summary: "You already know what to cut. The knowledge was never the bottleneck."
 image: ""
 ---

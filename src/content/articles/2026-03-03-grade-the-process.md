@@ -2,7 +2,7 @@
 title: "Grade the Process, Not the Outcome"
 date: 2026-03-03
 draft: false
-tags: ["Risk Management", "Decision-Making", "Mental Models"]
+tags: ["risk-management", "decision-making", "mental-models"]
 summary: "You don't control outcomes. You control the quality of the reasoning that produces them."
 image: ""
 ---

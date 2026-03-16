@@ -2,7 +2,7 @@
 title: "The Neurological Prime Time"
 date: 2026-03-05
 draft: false
-tags: ["Attention", "Sovereignty", "Focus", "Systems"]
+tags: ["attention", "sovereignty", "focus", "systems"]
 summary: "The first and last twenty minutes of your day are the highest-value attention real estate you own."
 image: ""
 ---

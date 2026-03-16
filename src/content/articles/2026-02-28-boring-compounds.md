@@ -2,7 +2,7 @@
 title: "Boring Compounds"
 date: 2026-02-28
 draft: false
-tags: ["Compounding", "Time-Preference", "Building", "Long-term Thinking"]
+tags: ["compounding", "time-preference", "building", "long-term-thinking"]
 summary: "The visible work gets the attention. The invisible work gets the results."
 image: ""
 ---

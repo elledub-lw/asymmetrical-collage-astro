@@ -2,7 +2,7 @@
 title: "The Comfort Tax"
 date: 2026-01-11
 draft: false
-tags: ["Antifragile"]
+tags: ["antifragile"]
 categories: ["Daily Blog"]
 author: "Elledub"
 summary: "Capability compounds. So does dependency."

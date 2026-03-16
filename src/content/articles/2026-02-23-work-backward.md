@@ -2,7 +2,7 @@
 title: "Work Backward"
 date: 2026-02-23
 draft: false
-tags: ["Mental Models", "Risk Management", "Bitcoin"]
+tags: ["mental-models", "risk-management", "bitcoin"]
 summary: "The ruin cases are finite. The path forward isn't."
 image: ""
 ---

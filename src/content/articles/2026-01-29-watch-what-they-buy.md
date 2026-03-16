@@ -3,7 +3,7 @@
 title: “Watch What They Buy”
 date: 2026-01-29
 draft: false
-tags: [“incentives”, “skin-in-the-game”, “expensive-signals”, “decision-making”]
+tags: ["incentives", "skin-in-the-game", "expensive-signals", "decision-making"]
 summary: “Trust the wallet, not the words.”
 
 --- 

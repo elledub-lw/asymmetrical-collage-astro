@@ -2,7 +2,7 @@
 title: "Financial Risk Management in the Digital Age"
 date: 2025-05-08
 draft: false
-tags: ["Risk Management", "Financial Sovereignty", "Digital Assets"]
+tags: ["risk-management", "financial-sovereignty", "digital-assets"]
 categories: ["Analysis"]
 author: "Elledub"
 summary: "Navigating the complex landscape of modern financial risks requires a new approach. From digital asset custody to regulatory compliance, we explore the essential strategies for maintaining financial sovereignty while managing risk effectively."

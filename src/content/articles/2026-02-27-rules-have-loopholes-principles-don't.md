@@ -2,7 +2,7 @@
 title: "Rules Have Loopholes. Principles Don't."
 date: 2026-02-27
 draft: false
-tags: ["Decision-Making", "Mental Models", "Sovereignty"]
+tags: ["decision-making", "mental-models", "sovereignty"]
 summary: "Having a compass or a set of rules."
 image: ""
 ---

@@ -2,7 +2,7 @@
 title: "The Way Through"
 date: 2026-03-15
 draft: false
-tags: ["AI", "learning", "long-term-thinking", "strategy"]
+tags: ["ai", "learning", "long-term-thinking", "strategy"]
 summary: "The skill that survives any technological shift is the capacity to acquire new expertise."
 image: "/images/the-way-through.jpeg"
 ---

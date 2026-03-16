@@ -1,7 +1,7 @@
 ---
 title: "Beyond the Echo Chamber"
 date: 2026-01-18T12:00:00Z
-tags: ["Bitcoin", "Blind Spots"]
+tags: ["bitcoin", "blind-spots"]
 ---
 
 The easiest way to feel right is to only attend events where everyone already agrees with you.

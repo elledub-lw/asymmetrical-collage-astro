@@ -3,7 +3,7 @@
 title: “Trust Time”
 date: 2026-02-03
 draft: false
-tags: [“lindy-effect”, “time”, “durability”, “historical-patterns”]
+tags: ["lindy-effect", "time", "durability", "historical-patterns"]
 summary: “The longer something survives, the longer it’s likely to last.”
 image: “”
 

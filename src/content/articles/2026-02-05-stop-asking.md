@@ -3,7 +3,7 @@
 title: “Stop Asking”
 date: 2026-02-05
 draft: false
-tags: [“sovereignty”, “permissionless”, “gatekeepers”, “agency”]
+tags: ["sovereignty", "permissionless", "gatekeepers", "agency"]
 summary: “The world is permissionless. Most people still act like it isn’t.”
 image: “”
 

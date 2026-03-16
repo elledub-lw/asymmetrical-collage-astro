@@ -2,7 +2,7 @@
 title: "Bitcoin Privacy Tools: A Comprehensive Guide"
 date: 2025-05-06
 draft: false
-tags: ["Bitcoin", "Privacy", "Security"]
+tags: ["bitcoin", "privacy", "security"]
 categories: ["Technical Guide"]
 author: "Elledub"
 summary: "Privacy is essential for financial sovereignty. This comprehensive guide examines the current state of Bitcoin privacy tools, from mixing services to Lightning Network considerations."

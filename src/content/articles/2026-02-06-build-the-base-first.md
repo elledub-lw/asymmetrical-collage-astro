@@ -3,7 +3,7 @@
 title: “Build the Base First”
 date: 2026-02-06
 draft: false
-tags: [“specialization”, “expertise”, “strategy”, “skill-building”]
+tags: ["specialization", "expertise", "strategy", "skill-building"]
 summary: “Specialization is a luxury that generalists earn.”
 image: “”
 

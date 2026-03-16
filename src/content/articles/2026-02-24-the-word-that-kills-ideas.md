@@ -3,7 +3,7 @@
 title: “The Word That Kills Ideas”
 date: 2026-02-24
 draft: false
-tags: [“Communication”, “Thinking”]
+tags: ["communication", "thinking"]
 summary: “The clearest thinkers speak the most directly.”
 image: “”
 
