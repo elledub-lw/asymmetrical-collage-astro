@@ -28,10 +28,10 @@ const path = currentPath.replace(/\/$/, '');
 
     <!-- Right side: theme toggle + hamburger -->
     <div class="nav-right">
-      <!-- Dark mode toggle -->
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <span class="icon-sun">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Dark mode toggle pill -->
+      <div class="theme-pill" id="theme-toggle" role="button" aria-label="Toggle dark mode">
+        <span class="pill-icon" data-mode="light">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
             <line x1="12" y1="21" x2="12" y2="23"/>
@@ -43,12 +43,12 @@ const path = currentPath.replace(/\/$/, '');
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
         </span>
-        <span class="icon-moon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="pill-icon" data-mode="dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </span>
-      </button>
+      </div>
 
       <!-- Hamburger (mobile only) -->
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -142,31 +142,38 @@ const path = currentPath.replace(/\/$/, '');
     gap: 0.5rem;
   }
 
-  /* Theme toggle */
-  .theme-toggle {
+  /* Theme toggle pill */
+  .theme-pill {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .theme-pill:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .pill-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    cursor: pointer;
-    color: var(--color-nav-text);
-    font-size: 0.9375rem;
-    transition: background-color 0.2s ease;
-    padding: 0;
-    line-height: 1;
+    color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  .theme-toggle:hover {
+  .pill-icon.active {
     background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
   }
-
-  /* Show correct icon based on current theme */
-  [data-theme="light"] .icon-moon { display: none; }
-  [data-theme="dark"]  .icon-sun  { display: none; }
 
   /* Hamburger */
   .nav-toggle {
@@ -258,14 +265,26 @@ const path = currentPath.replace(/\/$/, '');
     });
   });
 
-  // Dark mode toggle
-  const themeToggle = document.getElementById('theme-toggle');
+  // Dark mode pill toggle
+  const themePill = document.getElementById('theme-toggle');
+  const pillIcons = themePill?.querySelectorAll('.pill-icon');
 
-  themeToggle?.addEventListener('click', () => {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme') || 'light';
+  function updatePill(theme: string) {
+    pillIcons?.forEach(icon => {
+      const el = icon as HTMLElement;
+      el.classList.toggle('active', el.dataset.mode === theme);
+    });
+  }
+
+  // Set initial active state
+  const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  updatePill(initialTheme);
+
+  themePill?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', next);
+    document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('ac-theme', next);
+    updatePill(next);
   });
 </script>
