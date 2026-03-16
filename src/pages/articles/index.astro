@@ -20,7 +20,7 @@ const allTags = Object.entries(tagCounts)
   .map(([tag]) => tag);
 
 const featuredTags = ['sovereignty', 'decision-making', 'long-term-thinking', 'bitcoin'];
-const moreTags = allTags.filter(t => !featuredTags.includes(t));
+const moreTags = allTags.filter(t => !featuredTags.includes(t)).sort();
 ---
 
 <BaseLayout
