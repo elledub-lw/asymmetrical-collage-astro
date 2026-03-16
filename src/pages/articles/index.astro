@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL;
 const allPosts = await getCollection('articles', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-// Gather all tags for the filter row
+// Gather all tags sorted by frequency
 const tagCounts: Record<string, number> = {};
 posts.forEach(post => {
   post.data.tags.forEach(tag => {
@@ -19,35 +19,37 @@ const allTags = Object.entries(tagCounts)
   .sort((a, b) => b[1] - a[1])
   .map(([tag]) => tag);
 
-const featuredTags = ['bitcoin', 'risk', 'sovereignty', 'long-term-thinking'];
+const featuredTags = ['sovereignty', 'decision-making', 'long-term-thinking', 'bitcoin'];
+const moreTags = allTags.filter(t => !featuredTags.includes(t));
 ---
 
 <BaseLayout
-  title="Articles"
+  title="Blog"
   description="All posts from Asymmetrical Collage — on sovereignty, resilience, Bitcoin, risk, and building for the long term."
 >
   <div class="section">
     <div class="content-column">
       <header class="page-header">
-        <h1 class="page-title">Articles</h1>
+        <h1 class="page-title">Blog</h1>
         <p class="post-count">{posts.length} posts</p>
       </header>
 
-      <!-- Featured tag filter -->
       <div class="tag-filter">
         {featuredTags.map(tag => (
           <a href={`${base}tags/${tag}/`} class="tag">{tag}</a>
         ))}
-        <span class="tag-divider">|</span>
-        {allTags
-          .filter(t => !featuredTags.includes(t))
-          .map(tag => (
+
+        <button class="more-tags-btn" id="more-tags-btn" aria-expanded="false">
+          +{moreTags.length} more
+        </button>
+
+        <div class="more-tags" id="more-tags" hidden>
+          {moreTags.map(tag => (
             <a href={`${base}tags/${tag}/`} class="tag tag-secondary">{tag}</a>
-          ))
-        }
+          ))}
+        </div>
       </div>
 
-      <!-- Posts list -->
       <div class="posts-list">
         {posts.map(post => (
           <PostCard post={post} />
@@ -88,10 +90,31 @@ const featuredTags = ['bitcoin', 'risk', 'sovereignty', 'long-term-thinking'];
     border-bottom: 2px solid var(--color-border);
   }
 
-  .tag-divider {
-    color: var(--color-border);
-    font-size: 0.875rem;
-    margin: 0 0.25rem;
+  .more-tags-btn {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .more-tags-btn:hover,
+  .more-tags-btn[aria-expanded="true"] {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .more-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
   }
 
   .tag-secondary {
@@ -102,3 +125,20 @@ const featuredTags = ['bitcoin', 'risk', 'sovereignty', 'long-term-thinking'];
     opacity: 1;
   }
 </style>
+
+<script>
+  const btn = document.getElementById('more-tags-btn');
+  const panel = document.getElementById('more-tags');
+
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if (expanded) {
+      panel?.setAttribute('hidden', '');
+      btn.textContent = btn.textContent?.replace('−', '+') ?? btn.textContent;
+    } else {
+      panel?.removeAttribute('hidden');
+      btn.textContent = btn.textContent?.replace('+', '−') ?? btn.textContent;
+    }
+  });
+</script>
