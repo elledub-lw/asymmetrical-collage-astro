@@ -6,7 +6,7 @@ tags:
   - bitcoin
   - payments
   - sovereignty
-  - AI
+  - ai
 summary: The race to own AI agent payment rails is already underway - and whoever wins controls the next layer of commerce.
 image: ""
 ---
