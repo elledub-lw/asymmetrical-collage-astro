@@ -43,7 +43,7 @@ const moreTags = allTags.filter(t => !featuredTags.includes(t));
           +{moreTags.length} more
         </button>
 
-        <div class="more-tags" id="more-tags" hidden>
+        <div class="more-tags" id="more-tags">
           {moreTags.map(tag => (
             <a href={`${base}tags/${tag}/`} class="tag tag-secondary">{tag}</a>
           ))}
@@ -111,10 +111,14 @@ const moreTags = allTags.filter(t => !featuredTags.includes(t));
   }
 
   .more-tags {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 0.5rem;
     width: 100%;
+  }
+
+  .more-tags.is-open {
+    display: flex;
   }
 
   .tag-secondary {
@@ -131,13 +135,14 @@ const moreTags = allTags.filter(t => !featuredTags.includes(t));
   const panel = document.getElementById('more-tags');
 
   btn?.addEventListener('click', () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    if (expanded) {
-      panel?.setAttribute('hidden', '');
+    const isOpen = panel?.classList.contains('is-open');
+    if (isOpen) {
+      panel?.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
       btn.textContent = btn.textContent?.replace('−', '+') ?? btn.textContent;
     } else {
-      panel?.removeAttribute('hidden');
+      panel?.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
       btn.textContent = btn.textContent?.replace('+', '−') ?? btn.textContent;
     }
   });
