@@ -1,7 +1,7 @@
 ---
 title: "Bitcoin Privacy Tools: A Comprehensive Guide"
 date: 2025-05-06
-draft: false
+draft: true
 tags: ["bitcoin", "privacy", "security"]
 categories: ["Technical Guide"]
 author: "Elledub"
