@@ -70,14 +70,14 @@
   --color-surface:      #05445E;
   --color-text:         #D4F1F4;
   --color-text-muted:   #8ab8c4;
-  --color-heading:      #D4F1F4;   /* Baby Blue — less saturated than Blue Green, better readability */
-  --color-accent:       #75E6DA;   /* Blue Green stays for interactive accents */
+  --color-heading:      #75E6DA;   /* Blue Green — vivid teal for headings and post titles */
+  --color-accent:       #75E6DA;   /* Blue Green — interactive accents */
   --color-accent-hover: #5dd4c8;
   --color-cta:          #F7931A;
   --color-cta-hover:    #ff9e1f;
   --color-border:       rgba(117, 230, 218, 0.2);
-  --color-tag-bg:       rgba(24, 154, 180, 0.25);
-  --color-tag-text:     #D4F1F4;   /* Baby Blue — matches headings, less visual noise */
+  --color-tag-bg:       rgba(117, 230, 218, 0.15);
+  --color-tag-text:     #75E6DA;   /* Blue Green — matches headings */
   --color-nav-bg:       #03303f;
   --color-nav-text:     #D4F1F4;   /* Baby Blue — logo */
   --color-nav-link:     rgba(255, 255, 255, 0.85); /* White — links differ from logo */
