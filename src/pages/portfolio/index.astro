@@ -8,24 +8,28 @@ const entries = [
     name: 'nodl',
     url: 'https://nodl.eu',
     logo: '/images/nodl-logo.png',
+    logoDark: '/images/nodl-logo-dark.png',
     description: 'Builds the hardware and tools for people who want to run their own Bitcoin infrastructure — and keep it that way.',
   },
   {
     name: 'nodl cloud',
     url: 'https://nodl.cloud',
     logo: '/images/nodl-cloud-logo.png',
+    logoDark: '/images/nodl-cloud-logo-dark.png',
     description: 'Managed Bitcoin and Lightning node infrastructure, hosted in Europe — for people who want sovereign infrastructure without managing the hardware.',
   },
   {
     name: 'ExplainingBitcoin',
     url: 'https://explainingbitcoin.com',
     logo: null,
+    logoDark: null,
     description: 'Secure Your Bitcoin Legacy.',
   },
   {
     name: 'Bitcoin in French',
     url: null,
     logo: null,
+    logoDark: null,
     description: 'Six foundational Bitcoin books translated into French — works by Andreas Antonopoulos, Saifedean Ammous, Vijay Boyapati, Knut Svanholm, and Jonathan Bier. The ideas mattered too much to leave in one language.',
   },
 ];
@@ -49,7 +53,12 @@ const entries = [
               <a href={entry.url} class="portfolio-entry portfolio-entry--link" target="_blank" rel="noopener noreferrer">
                 <div class="entry-header">
                   {entry.logo
-                    ? <img src={entry.logo} alt={`${entry.name} logo`} class="entry-logo" />
+                    ? (
+                      <div class="entry-logo-wrap">
+                        <img src={entry.logo} alt={`${entry.name} logo`} class="entry-logo entry-logo--light" />
+                        {entry.logoDark && <img src={entry.logoDark} alt={`${entry.name} logo`} class="entry-logo entry-logo--dark" />}
+                      </div>
+                    )
                     : <div class="entry-name">{entry.name}</div>
                   }
                 </div>
@@ -108,11 +117,27 @@ const entries = [
     margin-bottom: var(--space-md);
   }
 
+  .entry-logo-wrap {
+    display: block;
+  }
+
   .entry-logo {
-    height: 28px;
+    height: 48px;
     width: auto;
     display: block;
     object-fit: contain;
+  }
+
+  .entry-logo--dark {
+    display: none;
+  }
+
+  [data-theme="dark"] .entry-logo--light {
+    display: none;
+  }
+
+  [data-theme="dark"] .entry-logo--dark {
+    display: block;
   }
 
   .entry-name {
