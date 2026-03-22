@@ -5,13 +5,21 @@ const base = import.meta.env.BASE_URL;
 
 const entries = [
   {
-    name: 'BIP21 / nodl',
+    name: 'nodl',
     url: 'https://nodl.eu',
-    description: 'Builds tools and operates network infrastructure that let people reclaim ownership of their life\'s narrative.',
+    logo: '/images/nodl-logo.png',
+    description: 'Builds the hardware and tools for people who want to run their own Bitcoin infrastructure — and keep it that way.',
+  },
+  {
+    name: 'nodl cloud',
+    url: 'https://nodl.cloud',
+    logo: '/images/nodl-cloud-logo.png',
+    description: 'Managed Bitcoin and Lightning node infrastructure, hosted in Europe — for people who want sovereign infrastructure without managing the hardware.',
   },
   {
     name: 'ExplainingBitcoin',
     url: 'https://explainingbitcoin.com',
+    logo: null,
     description: 'Secure Your Bitcoin Legacy.',
   },
 ];
@@ -31,7 +39,12 @@ const entries = [
       <div class="portfolio-list">
         {entries.map(entry => (
           <a href={entry.url} class="portfolio-entry" target="_blank" rel="noopener noreferrer">
-            <div class="entry-name">{entry.name}</div>
+            <div class="entry-header">
+              {entry.logo
+                ? <img src={entry.logo} alt={`${entry.name} logo`} class="entry-logo" />
+                : <div class="entry-name">{entry.name}</div>
+              }
+            </div>
             <p class="entry-description">{entry.description}</p>
             <span class="entry-url">{entry.url.replace('https://', '')}</span>
           </a>
@@ -63,15 +76,26 @@ const entries = [
     padding: var(--space-xl) 0;
     border-top: 1px solid var(--color-border);
     text-decoration: none;
-    transition: border-color 0.2s ease;
+    transition: opacity 0.2s ease;
   }
 
   .portfolio-entry:last-child {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .portfolio-entry:hover .entry-name {
-    color: var(--color-accent);
+  .portfolio-entry:hover {
+    opacity: 0.8;
+  }
+
+  .entry-header {
+    margin-bottom: var(--space-md);
+  }
+
+  .entry-logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    object-fit: contain;
   }
 
   .entry-name {
@@ -79,8 +103,11 @@ const entries = [
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-heading);
-    margin-bottom: var(--space-xs);
     transition: color 0.2s ease;
+  }
+
+  .portfolio-entry:hover .entry-name {
+    color: var(--color-accent);
   }
 
   .entry-description {
