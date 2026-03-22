@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const entries = [
+  {
+    name: 'BIP21 / nodl',
+    url: 'https://nodl.eu',
+    description: 'Builds tools and operates network infrastructure that let people reclaim ownership of their life\'s narrative.',
+  },
+  {
+    name: 'ExplainingBitcoin',
+    url: 'https://explainingbitcoin.com',
+    description: 'Secure Your Bitcoin Legacy.',
+  },
+];
+---
+
+<BaseLayout
+  title="Portfolio — Asymmetrical Collage"
+  description="Companies and projects built or backed by Asymmetrical Collage."
+>
+  <div class="section">
+    <div class="content-column">
+      <header class="page-header">
+        <h1>Portfolio</h1>
+        <p class="page-intro">Investments and projects. The list grows over time.</p>
+      </header>
+
+      <div class="portfolio-list">
+        {entries.map(entry => (
+          <a href={entry.url} class="portfolio-entry" target="_blank" rel="noopener noreferrer">
+            <div class="entry-name">{entry.name}</div>
+            <p class="entry-description">{entry.description}</p>
+            <span class="entry-url">{entry.url.replace('https://', '')}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .page-intro {
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+  }
+
+  .portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .portfolio-entry {
+    display: block;
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .portfolio-entry:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .portfolio-entry:hover .entry-name {
+    color: var(--color-accent);
+  }
+
+  .entry-name {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-bottom: var(--space-xs);
+    transition: color 0.2s ease;
+  }
+
+  .entry-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+    max-width: 52ch;
+  }
+
+  .entry-url {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-accent);
+    text-transform: lowercase;
+  }
+</style>

@@ -20,6 +20,11 @@ const path = currentPath.replace(/\/$/, '');
         </a>
       </li>
       <li>
+        <a href={`${base}portfolio/`} class={path.startsWith(base + 'portfolio') ? 'active' : ''}>
+          Portfolio
+        </a>
+      </li>
+      <li>
         <a href={`${base}about/`} class={path === base + 'about' ? 'active' : ''}>
           About
         </a>
@@ -63,6 +68,7 @@ const path = currentPath.replace(/\/$/, '');
   <div class="mobile-menu" id="mobile-menu">
     <ul>
       <li><a href={`${base}articles/`}>Blog</a></li>
+      <li><a href={`${base}portfolio/`}>Portfolio</a></li>
       <li><a href={`${base}about/`}>About</a></li>
     </ul>
   </div>
