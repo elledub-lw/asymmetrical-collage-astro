@@ -22,6 +22,12 @@ const entries = [
     logo: null,
     description: 'Secure Your Bitcoin Legacy.',
   },
+  {
+    name: 'Bitcoin in French',
+    url: null,
+    logo: null,
+    description: 'Six foundational Bitcoin books translated into French — works by Andreas Antonopoulos, Saifedean Ammous, Vijay Boyapati, Knut Svanholm, and Jonathan Bier. The ideas mattered too much to leave in one language.',
+  },
 ];
 ---
 
@@ -38,16 +44,27 @@ const entries = [
 
       <div class="portfolio-list">
         {entries.map(entry => (
-          <a href={entry.url} class="portfolio-entry" target="_blank" rel="noopener noreferrer">
-            <div class="entry-header">
-              {entry.logo
-                ? <img src={entry.logo} alt={`${entry.name} logo`} class="entry-logo" />
-                : <div class="entry-name">{entry.name}</div>
-              }
-            </div>
-            <p class="entry-description">{entry.description}</p>
-            <span class="entry-url">{entry.url.replace('https://', '')}</span>
-          </a>
+          entry.url
+            ? (
+              <a href={entry.url} class="portfolio-entry portfolio-entry--link" target="_blank" rel="noopener noreferrer">
+                <div class="entry-header">
+                  {entry.logo
+                    ? <img src={entry.logo} alt={`${entry.name} logo`} class="entry-logo" />
+                    : <div class="entry-name">{entry.name}</div>
+                  }
+                </div>
+                <p class="entry-description">{entry.description}</p>
+                <span class="entry-url">{entry.url.replace('https://', '')}</span>
+              </a>
+            )
+            : (
+              <div class="portfolio-entry">
+                <div class="entry-header">
+                  <div class="entry-name">{entry.name}</div>
+                </div>
+                <p class="entry-description">{entry.description}</p>
+              </div>
+            )
         ))}
       </div>
     </div>
@@ -83,7 +100,7 @@ const entries = [
     border-bottom: 1px solid var(--color-border);
   }
 
-  .portfolio-entry:hover {
+  .portfolio-entry--link:hover {
     opacity: 0.8;
   }
 
