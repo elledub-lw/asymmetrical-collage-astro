@@ -59,6 +59,9 @@
   --color-nav-hover:    #F7931A;
   --color-nav-border:   rgba(255,255,255,0.12);
   --color-hero-overlay: rgba(5, 68, 94, 0.42);
+  --color-hero-title:   #ffffff;
+  --color-hero-tagline: rgba(212, 241, 244, 0.95);
+  --color-hero-desc:    rgba(212, 241, 244, 0.75);
   --color-code-bg:      #f0f9fb;
   --color-footer-bg:    #05445E;
   --color-footer-text:  #D4F1F4;
@@ -66,27 +69,30 @@
 
 /* Dark theme */
 [data-theme="dark"] {
-  --color-bg:           #03303f;
-  --color-surface:      #05445E;
-  --color-text:         #D4F1F4;
-  --color-text-muted:   #8ab8c4;
-  --color-heading:      #75E6DA;   /* Blue Green — vivid teal for headings and post titles */
+  --color-bg:           #121212;
+  --color-surface:      #2e2e2e;   /* +12% white overlay — cards, blockquotes */
+  --color-text:         #E0E0E0;
+  --color-text-muted:   #8aacb3;
+  --color-heading:      #75E6DA;   /* Blue Green — vivid teal, 13:1 contrast on bg */
   --color-accent:       #75E6DA;   /* Blue Green — interactive accents */
   --color-accent-hover: #5dd4c8;
   --color-cta:          #F7931A;
   --color-cta-hover:    #ff9e1f;
-  --color-border:       rgba(117, 230, 218, 0.2);
+  --color-border:       rgba(117, 230, 218, 0.25);
   --color-tag-bg:       rgba(117, 230, 218, 0.15);
-  --color-tag-text:     #75E6DA;   /* Blue Green — matches headings */
-  --color-nav-bg:       #03303f;
-  --color-nav-text:     #D4F1F4;   /* Baby Blue — logo */
-  --color-nav-link:     rgba(255, 255, 255, 0.85); /* White — links differ from logo */
+  --color-tag-text:     #75E6DA;
+  --color-nav-bg:       #121212;
+  --color-nav-text:     #E0E0E0;
+  --color-nav-link:     rgba(255, 255, 255, 0.85);
   --color-nav-hover:    #F7931A;
-  --color-nav-border:   rgba(117, 230, 218, 0.15);
-  --color-hero-overlay: rgba(3, 48, 63, 0.58);
-  --color-code-bg:      #05445E;
-  --color-footer-bg:    #03303f;
-  --color-footer-text:  rgba(212, 241, 244, 0.7);
+  --color-nav-border:   rgba(255, 255, 255, 0.08);
+  --color-hero-overlay: rgba(5, 68, 94, 0.45);
+  --color-hero-title:   #ffffff;
+  --color-hero-tagline: rgba(212, 241, 244, 0.95);
+  --color-hero-desc:    var(--color-text);
+  --color-code-bg:      #323232;   /* +14% white overlay — code blocks, slightly raised */
+  --color-footer-bg:    #121212;
+  --color-footer-text:  rgba(224, 224, 224, 0.7);
 }
 
 /* =============================================

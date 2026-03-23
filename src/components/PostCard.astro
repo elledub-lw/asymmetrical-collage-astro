@@ -48,6 +48,10 @@ const slug = post.slug;
     border-bottom: 1px solid var(--color-border);
   }
 
+  :global([data-theme="dark"]) .post-card {
+    border-bottom-width: 2px;
+  }
+
   .post-card:last-child {
     border-bottom: none;
   }
@@ -85,6 +89,10 @@ const slug = post.slug;
     line-height: 1.65;
     margin-bottom: var(--space-md);
     max-width: 60ch;
+  }
+
+  :global([data-theme="dark"]) .post-summary {
+    color: var(--color-text);
   }
 
   .post-tags {

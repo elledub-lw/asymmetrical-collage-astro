@@ -35,6 +35,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: var(--space-2xl);
   }
 
+  :global([data-theme="dark"]) .intro {
+    color: var(--color-text);
+  }
+
   .connect-links {
     display: flex;
     flex-direction: column;

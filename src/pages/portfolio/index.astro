@@ -91,6 +91,10 @@ const entries = [
     margin-bottom: 0;
   }
 
+  :global([data-theme="dark"]) .page-intro {
+    color: var(--color-text);
+  }
+
   .portfolio-list {
     display: flex;
     flex-direction: column;
@@ -158,6 +162,10 @@ const entries = [
     line-height: 1.6;
     margin-bottom: var(--space-sm);
     max-width: 52ch;
+  }
+
+  :global([data-theme="dark"]) .entry-description {
+    color: var(--color-text);
   }
 
   .entry-url {
