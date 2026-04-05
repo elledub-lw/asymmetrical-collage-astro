@@ -198,6 +198,19 @@ pre code {
   padding: 0;
 }
 
+/* Shiki dual-theme switching — light mode default, dark mode via data-theme */
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+[data-theme="dark"] .astro-code,
+[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 hr {
   border: none;
   border-top: 1px solid var(--color-border);
